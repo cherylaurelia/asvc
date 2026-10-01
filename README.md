@@ -2,6 +2,58 @@
 
 Landed groups every bill for one import shipment, shows the true landed cost per unit, and flags charges that do not match the original quote. It is a hackathon prototype running entirely on hardcoded sample data.
 
+Live demo: https://asvc.vercel.app
+
+![Landed demo: dispute a charge, simulate a late bill, draft a dispute email, reset](docs/demo.gif)
+
+## Features
+
+The figures below are the sample data's starting state.
+
+**Landed cost**
+- One shipment (SHP-1042, 1,000 dining chairs from Vietnam) with all its bills grouped together.
+- Three per-unit figures: supplier price ($11.00), expected landed cost from the quote ($13.56) and actual landed cost from the bills ($14.20).
+- The gap between actual and expected (+$0.64), with a bar showing the expected share against the overage.
+- Total billed so far ($14,200).
+
+**Money at risk**
+- A running total of unresolved flagged charges: "$640 at risk across 2 charges".
+- "If disputes succeed: $13.78/unit" appears once a charge is disputed.
+- Changes to "$0 at risk. All flagged charges reviewed." when every flag is approved.
+
+**Bill timeline**
+- Bills in date order, each with date, vendor, bill id and total.
+- A bill with an unresolved flag gets an orange dot and a FLAGGED badge. Both clear once its flags are approved.
+- Click a bill to highlight its flags. Click again to clear.
+
+**Audit rules** (run on every bill line; a line gets at most one flag)
+- Duplicate charge (HIGH): the same charge and amount billed twice on one invoice.
+- Not in quote (REVIEW): a charge the quote never listed, with specific wording for demurrage and storage.
+- Above quote (REVIEW): billed more than quoted, flagged for the difference.
+- Duty mismatch (REVIEW): duty differs from the declared rate by more than $1.
+- When duty matches, a green "Duty checked: matches 5% rate" line shows.
+- The sample data triggers the first two rules (fuel surcharge duplicate $420, demurrage $220). The other two are built and covered by tests.
+
+**Flags**
+- Each flag shows severity, amount at risk, vendor, bill id and a plain-English reason, sorted by severity and then amount.
+- Dispute marks it Disputed. It stays in money at risk and feeds the "if disputes succeed" figure.
+- Approve marks it Approved and removes it from money at risk.
+- Draft dispute email opens a pre-written message to the vendor, filled in from the flag. Nothing is sent.
+
+**Cost breakdown**
+- "Where the money went": bars for Product, Freight, Customs and Extra charges, each with amount and percentage.
+
+**Demo controls**
+- Simulate new bill adds a late storage bill ($180): actual cost moves to $14.38, a third flag appears, and $820 is at risk. The button disables after one use.
+- Reset demo restores the starting state, including flag statuses and the selected bill.
+- Every section updates together, because costs and flags are recalculated from the bills each time.
+
+**Motion, keyboard and layout**
+- The actual cost counts up when it changes, and the new bill, its flag and the cost number get a lime highlight.
+- Breakdown bars grow in on load and resize when totals change.
+- Every control works from the keyboard with a visible focus ring. Escape closes the email draft.
+- Fits 1440x900 and 1920x1080 without scrolling, and stacks on a phone-width screen.
+
 ## Run it
 
 ```
@@ -42,5 +94,7 @@ Also available: click a bill to highlight its flags, **Approve** a flag to take 
 - No real bill or invoice extraction, and no matching of bills to shipments. The bills are already structured in the sample data.
 - The dispute email is a filled-in text template shown on screen. Nothing is sent.
 - No Ramp API or any other integration, no backend, no login.
+- The side rail icons are decorative, not navigation.
+- No undo on Dispute or Approve other than Reset demo.
 - Flags mean "flagged for review". They are simple rule checks against the quote, not proof that a charge is wrong.
 - Built for desktop demo use (checked at 1440x900 and 1920x1080). The layout stacks on a phone-width screen but that is not the target.
