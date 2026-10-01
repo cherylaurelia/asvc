@@ -3,11 +3,11 @@ import Badge from "./Badge.jsx";
 
 export default function FlagList({ flags, shipment, selectedBillId, lateBillId, dutyOk, onSetStatus }) {
   return (
-    <section className="overflow-hidden rounded-xl border border-line bg-white">
-      <h2 className="border-b border-line px-4 py-2.5 text-sm font-semibold text-ink">
-        Flagged for review <span className="font-normal text-stone-500">({flags.length})</span>
+    <section className="glass overflow-hidden rounded-3xl">
+      <h2 className="border-b border-hairline px-5 py-2.5 text-[15px] font-semibold">
+        Flagged for review <span className="font-normal text-muted">({flags.length})</span>
       </h2>
-      {flags.length === 0 && <p className="px-4 py-3 text-sm text-stone-500">No charges flagged on these bills.</p>}
+      {flags.length === 0 && <p className="px-5 py-3 text-sm text-muted">No charges flagged on these bills.</p>}
       <ul>
         {flags.map((flag) => (
           <FlagItem
@@ -22,7 +22,7 @@ export default function FlagList({ flags, shipment, selectedBillId, lateBillId, 
         ))}
       </ul>
       {dutyOk && (
-        <div className="flex items-center gap-2 border-t border-line px-4 py-2.5 text-sm text-emerald-800">
+        <div className="flex items-center gap-2 border-t border-hairline px-5 py-2.5 text-sm text-success">
           <Badge tone="checked">CHECKED</Badge>
           Duty checked: matches {shipment.dutyRate * 100}% rate
         </div>
