@@ -29,25 +29,22 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-canvas text-ink">
-      <header className="bg-ink text-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
-          <h1 className="flex items-center gap-2 text-lg font-semibold tracking-tight">
-            <span className="size-3.5 rounded-[3px] bg-lime" aria-hidden="true" />
-            Landed
-          </h1>
-          <span className="text-sm text-stone-400">
+    <div className="min-h-screen">
+      <header className="sticky top-0 z-10 px-4 pt-3 sm:px-6">
+        <div className="glass mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 rounded-full px-5 py-2">
+          <h1 className="text-[17px] font-bold tracking-tight">Landed</h1>
+          <span className="text-sm text-muted">
             {data.shipment.id} · {data.shipment.name}
           </span>
           <span className="ml-auto flex items-center gap-4">
-            <button type="button" onClick={resetDemo} className="rounded-sm text-sm text-stone-300 underline decoration-stone-500 underline-offset-2 hover:text-white focus-visible:outline-lime">
+            <button type="button" onClick={resetDemo} className="rounded-sm text-sm text-accent hover:underline">
               Reset demo
             </button>
             <button
               type="button"
               onClick={simulateLateBill}
               disabled={lateBillAdded}
-              className="rounded-full bg-lime px-4 py-1.5 text-sm font-semibold text-ink hover:brightness-95 active:brightness-90 focus-visible:outline-lime disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-stone-400"
+              className="rounded-full bg-accent px-4 py-1.5 text-sm font-semibold text-white hover:bg-accent-focus active:opacity-80 disabled:cursor-not-allowed disabled:bg-black/8 disabled:text-muted"
             >
               Simulate new bill
             </button>
@@ -55,9 +52,9 @@ export default function App() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl space-y-4 px-4 py-5 sm:px-6">
+      <main className="mx-auto max-w-6xl space-y-3 px-4 py-3 sm:px-6">
         <CostCard shipment={data.shipment} cost={cost} flash={lateBillAdded} />
-        <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-[2fr_3fr]">
+        <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-[2fr_3fr]">
           <BillTimeline bills={bills} flags={flags} selectedBillId={selectedBillId} onSelect={setSelectedBillId} />
           <FlagList
             flags={flags}
@@ -69,7 +66,7 @@ export default function App() {
           />
         </div>
         <Breakdown rows={categoryBreakdown(bills)} />
-        <footer className="px-1 text-xs text-stone-600">
+        <footer className="px-2 text-xs text-muted">
           Prototype running on hardcoded sample data. Charges are flagged for review, not proven wrong.
         </footer>
       </main>
