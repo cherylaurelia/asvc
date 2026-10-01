@@ -29,47 +29,70 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-10 px-4 pt-3 sm:px-6">
-        <div className="glass mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 rounded-full px-5 py-2">
-          <h1 className="text-[17px] font-bold tracking-tight">Landed</h1>
-          <span className="text-sm text-muted">
-            {data.shipment.id} · {data.shipment.name}
+    <div className="min-h-screen p-2 md:p-3">
+      <div className="mx-auto flex max-w-[84rem] gap-3 rounded-[1.75rem] bg-frame p-3 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.45)]">
+        <aside className="hidden w-14 shrink-0 flex-col items-center gap-3 rounded-2xl bg-ink py-3 md:flex">
+          <span className="flex size-9 items-center justify-center rounded-xl bg-lime text-ink" title="Landed">
+            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M3 8l9-5 9 5v8l-9 5-9-5z" />
+              <path d="M3 8l9 5 9-5M12 13v8" />
+            </svg>
           </span>
-          <span className="ml-auto flex items-center gap-4">
-            <button type="button" onClick={resetDemo} className="rounded-sm text-sm text-accent hover:underline">
-              Reset demo
-            </button>
-            <button
-              type="button"
-              onClick={simulateLateBill}
-              disabled={lateBillAdded}
-              className="rounded-full bg-accent px-4 py-1.5 text-sm font-semibold text-white hover:bg-accent-focus active:opacity-80 disabled:cursor-not-allowed disabled:bg-black/8 disabled:text-muted"
-            >
-              Simulate new bill
-            </button>
+          <span className="mt-2 flex size-9 items-center justify-center rounded-xl bg-white/15 text-white" title="Shipment">
+            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1.5" />
+              <rect x="14" y="3" width="7" height="7" rx="1.5" />
+              <rect x="3" y="14" width="7" height="7" rx="1.5" />
+              <rect x="14" y="14" width="7" height="7" rx="1.5" />
+            </svg>
           </span>
-        </div>
-      </header>
+          <span className="mt-auto text-[10px] font-semibold tracking-widest text-white/70 [writing-mode:vertical-rl]">
+            LANDED
+          </span>
+        </aside>
 
-      <main className="mx-auto max-w-6xl space-y-3 px-4 py-3 sm:px-6">
-        <CostCard shipment={data.shipment} cost={cost} flash={lateBillAdded} />
-        <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-[2fr_3fr]">
-          <BillTimeline bills={bills} flags={flags} selectedBillId={selectedBillId} onSelect={setSelectedBillId} />
-          <FlagList
-            flags={flags}
+        <main className="min-w-0 flex-1 space-y-3">
+          <CostCard
             shipment={data.shipment}
-            selectedBillId={selectedBillId}
-            lateBillId={data.lateBill.id}
-            dutyOk={dutyChecked(data.shipment, bills)}
-            onSetStatus={(id, status) => setFlagStatus((s) => ({ ...s, [id]: status }))}
+            cost={cost}
+            flash={lateBillAdded}
+            actions={
+              <>
+                <button
+                  type="button"
+                  onClick={resetDemo}
+                  className="rounded-full bg-white/70 px-4 py-1.5 text-sm font-semibold text-ink hover:bg-white active:opacity-80"
+                >
+                  Reset demo
+                </button>
+                <button
+                  type="button"
+                  onClick={simulateLateBill}
+                  disabled={lateBillAdded}
+                  className="rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-white hover:bg-accent-focus active:opacity-80 disabled:cursor-not-allowed disabled:bg-ink/15 disabled:text-ink/60"
+                >
+                  Simulate new bill
+                </button>
+              </>
+            }
           />
-        </div>
-        <Breakdown rows={categoryBreakdown(bills)} />
-        <footer className="px-2 text-xs text-muted">
-          Prototype running on hardcoded sample data. Charges are flagged for review, not proven wrong.
-        </footer>
-      </main>
+          <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-[2fr_3fr]">
+            <BillTimeline bills={bills} flags={flags} selectedBillId={selectedBillId} onSelect={setSelectedBillId} />
+            <FlagList
+              flags={flags}
+              shipment={data.shipment}
+              selectedBillId={selectedBillId}
+              lateBillId={data.lateBill.id}
+              dutyOk={dutyChecked(data.shipment, bills)}
+              onSetStatus={(id, status) => setFlagStatus((s) => ({ ...s, [id]: status }))}
+            />
+          </div>
+          <Breakdown rows={categoryBreakdown(bills)} />
+          <footer className="px-2 text-xs text-muted">
+            Prototype running on hardcoded sample data. Charges are flagged for review, not proven wrong.
+          </footer>
+        </main>
+      </div>
     </div>
   );
 }
