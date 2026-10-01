@@ -15,7 +15,7 @@
 - Second shipment and shipment list page (Tier 3). Not built.
 
 ## Next
-- Nothing required. Optional: deploy to Vercel (default Vite settings, no config needed).
+- Nothing required.
 
 ## Decisions
 - Repo was empty, so scaffolded by hand instead of using a template (fewer leftover files).
@@ -34,7 +34,9 @@
 - The side rail shows only the logo mark and one active view icon. No extra nav icons were added, since there are no other pages.
 - The email draft is rendered on `document.body` because a blurred glass ancestor would trap a fixed overlay.
 - Font is the system stack (SF Pro on Apple devices); Inter from Google Fonts is the fallback elsewhere.
-- Empty inline favicon added so the page loads with no console 404.
+- Favicon is `public/favicon.svg` (lime tile with the box mark).
+- `docs/demo.gif` was recorded from the production build with a scripted headless browser; the grey dot in it is a drawn pointer, not part of the app.
+- Deployed to Vercel from the CLI at https://asvc.vercel.app. Re-run `vercel deploy --prod` after changes.
 - Browser checks were scripted with headless Chrome from outside the repo, so no test-browser dependency was added to the project.
 
 ## Resume notes
