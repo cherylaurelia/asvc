@@ -36,7 +36,7 @@
 - Font is the system stack (SF Pro on Apple devices); Inter from Google Fonts is the fallback elsewhere.
 - Favicon is `public/favicon.svg` (lime tile with a ship mark).
 - `docs/demo.gif` was recorded from the production build with a scripted headless browser; the grey dot in it is a drawn pointer, not part of the app.
-- Deployed to Vercel from the CLI at https://asvc.vercel.app. Re-run `vercel deploy --prod` after changes.
+- Deployed to Vercel from the CLI at https://landed-ramp.vercel.app (also reachable at https://asvc.vercel.app). Re-run `vercel deploy --prod` after changes.
 - Browser checks were scripted with headless Chrome from outside the repo, so no test-browser dependency was added to the project.
 
 ## Resume notes
