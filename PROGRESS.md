@@ -9,7 +9,7 @@
 - Tier 3: "Draft dispute email" modal (string template, nothing sent).
 - Polish pass: shared `Badge` component, keyboard focus rings, Escape to close the email draft with focus returned to its link, reduced-motion handling, flag rows keep their height when buttons become a badge, empty state for no flags, layout stacks on narrow screens (checked at 390px wide).
 
-- Restyle: lime (#E4F222) and near-black (#1F1F1F) palette on a warm off-white canvas, dark header, dark "actual cost" card with an expected-vs-over bar, vertical bill timeline with dots, pill buttons and badges. Colour tokens live in `src/index.css` under `@theme`.
+- Restyle: Apple-style liquid glass dashboard. Translucent blurred panels over a soft colour field, floating pill toolbar, one blue accent (#0066cc), Apple system red, orange and green for state, system font stack, 400/600/700 weights only. The actual cost number counts up when it changes. Tokens and the `.glass` recipe live in `src/index.css`.
 
 ## Cut
 - Second shipment and shipment list page (Tier 3). Not built.
@@ -28,8 +28,9 @@
 - Quote lines are matched by `chargeType` only.
 - Timeline warning marker is the word "FLAGGED" in amber; it clears when all of a bill's flags are approved.
 - `money()` shows whole dollars without cents ($420) and cents only when needed.
-- The palette borrows the Ramp colours at the team's request (the original brief said not to copy Ramp branding). No Ramp logo, wordmark or name is used in the UI.
-- Inter is loaded from Google Fonts with a system font fallback, so the page still renders offline.
+- Look and tokens follow the open-source `rukkiecodes/claude-apple-design-system` reference (blue accent, pill buttons, hairlines), plus glass panels at the team's request. That reference avoids shadows; the glass panels use a soft one so they read as lifted. An earlier lime and black pass was replaced.
+- The email draft is rendered on `document.body` because a blurred glass ancestor would trap a fixed overlay.
+- Font is the system stack (SF Pro on Apple devices); Inter from Google Fonts is the fallback elsewhere.
 - Empty inline favicon added so the page loads with no console 404.
 - Browser checks were scripted with headless Chrome from outside the repo, so no test-browser dependency was added to the project.
 
