@@ -9,6 +9,8 @@
 - Tier 3: "Draft dispute email" modal (string template, nothing sent).
 - Polish pass: shared `Badge` component, keyboard focus rings, Escape to close the email draft with focus returned to its link, reduced-motion handling, flag rows keep their height when buttons become a badge, empty state for no flags, layout stacks on narrow screens (checked at 390px wide).
 
+- Restyle: lime (#E4F222) and near-black (#1F1F1F) palette on a warm off-white canvas, dark header, dark "actual cost" card with an expected-vs-over bar, vertical bill timeline with dots, pill buttons and badges. Colour tokens live in `src/index.css` under `@theme`.
+
 ## Cut
 - Second shipment and shipment list page (Tier 3). Not built.
 
@@ -26,6 +28,8 @@
 - Quote lines are matched by `chargeType` only.
 - Timeline warning marker is the word "FLAGGED" in amber; it clears when all of a bill's flags are approved.
 - `money()` shows whole dollars without cents ($420) and cents only when needed.
+- The palette borrows the Ramp colours at the team's request (the original brief said not to copy Ramp branding). No Ramp logo, wordmark or name is used in the UI.
+- Inter is loaded from Google Fonts with a system font fallback, so the page still renders offline.
 - Empty inline favicon added so the page loads with no console 404.
 - Browser checks were scripted with headless Chrome from outside the repo, so no test-browser dependency was added to the project.
 
