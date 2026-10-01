@@ -43,4 +43,4 @@ Also available: click a bill to highlight its flags, **Approve** a flag to take 
 - The dispute email is a filled-in text template shown on screen. Nothing is sent.
 - No Ramp API or any other integration, no backend, no login.
 - Flags mean "flagged for review". They are simple rule checks against the quote, not proof that a charge is wrong.
-- Built for desktop widths (checked at 1440x900 and 1920x1080).
+- Built for desktop demo use (checked at 1440x900 and 1920x1080). The layout stacks on a phone-width screen but that is not the target.

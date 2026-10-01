@@ -7,6 +7,7 @@
 - Phase 4: Dispute, Approve, Simulate new bill (idempotent, disables after use), highlight animation, Reset demo.
 - Phase 5: demo path walked three times each at 1440x900 and 1920x1080 on both `npm run dev` and `npm run preview`, using a headless Chrome script. No scrolling, no console errors, reset restores initial state.
 - Tier 3: "Draft dispute email" modal (string template, nothing sent).
+- Polish pass: shared `Badge` component, keyboard focus rings, Escape to close the email draft with focus returned to its link, reduced-motion handling, flag rows keep their height when buttons become a badge, empty state for no flags, layout stacks on narrow screens (checked at 390px wide).
 
 ## Cut
 - Second shipment and shipment list page (Tier 3). Not built.
