@@ -29,22 +29,25 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <header className="border-b border-slate-200 bg-white">
+    <div className="min-h-screen bg-canvas text-ink">
+      <header className="bg-ink text-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
-          <h1 className="text-lg font-semibold tracking-tight">Landed</h1>
-          <span className="text-sm text-slate-500">
+          <h1 className="flex items-center gap-2 text-lg font-semibold tracking-tight">
+            <span className="size-3.5 rounded-[3px] bg-lime" aria-hidden="true" />
+            Landed
+          </h1>
+          <span className="text-sm text-stone-400">
             {data.shipment.id} · {data.shipment.name}
           </span>
           <span className="ml-auto flex items-center gap-4">
-            <button type="button" onClick={resetDemo} className="rounded-sm text-sm text-slate-600 underline underline-offset-2 hover:text-slate-900">
+            <button type="button" onClick={resetDemo} className="rounded-sm text-sm text-stone-300 underline decoration-stone-500 underline-offset-2 hover:text-white focus-visible:outline-lime">
               Reset demo
             </button>
             <button
               type="button"
               onClick={simulateLateBill}
               disabled={lateBillAdded}
-              className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-700 active:bg-indigo-800 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-600"
+              className="rounded-full bg-lime px-4 py-1.5 text-sm font-semibold text-ink hover:brightness-95 active:brightness-90 focus-visible:outline-lime disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-stone-400"
             >
               Simulate new bill
             </button>
@@ -66,7 +69,7 @@ export default function App() {
           />
         </div>
         <Breakdown rows={categoryBreakdown(bills)} />
-        <footer className="text-xs text-slate-500">
+        <footer className="px-1 text-xs text-stone-600">
           Prototype running on hardcoded sample data. Charges are flagged for review, not proven wrong.
         </footer>
       </main>
