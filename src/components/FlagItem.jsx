@@ -12,9 +12,9 @@ const STATUS = {
 };
 
 const primaryButton =
-  "rounded-full border border-accent bg-accent px-3.5 py-1 text-xs font-semibold text-white hover:bg-accent-focus active:opacity-80";
+  "rounded-full border border-accent bg-accent px-3.5 py-1 text-[13px] font-semibold text-white hover:bg-accent-focus active:opacity-80";
 const outlineButton =
-  "rounded-full border border-ink/25 bg-white px-3.5 py-1 text-xs font-semibold text-ink hover:bg-frame active:opacity-80";
+  "rounded-full border border-ink/25 bg-white px-3.5 py-1 text-[13px] font-semibold text-ink hover:bg-frame active:opacity-80";
 
 // Rendered on the body: a glass ancestor would otherwise trap a fixed overlay.
 function EmailDraft({ flag, shipment, onClose }) {
@@ -37,10 +37,10 @@ function EmailDraft({ flag, shipment, onClose }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-baseline justify-between gap-4">
-          <h3 className="text-[15px] font-semibold">Draft dispute email</h3>
-          <span className="text-xs text-muted">Draft only. Nothing is sent.</span>
+          <h3 className="text-base font-semibold">Draft dispute email</h3>
+          <span className="text-sm text-muted">Draft only. Nothing is sent.</span>
         </div>
-        <pre className="mt-3 max-h-[60vh] overflow-auto whitespace-pre-wrap rounded-2xl bg-frame p-4 font-sans text-sm leading-relaxed">
+        <pre className="mt-3 max-h-[60vh] overflow-auto whitespace-pre-wrap rounded-2xl bg-frame p-4 font-sans text-[15px] leading-relaxed">
           {draftDisputeEmail(flag, shipment)}
         </pre>
         <div className="mt-3 text-right">
@@ -67,14 +67,14 @@ export default function FlagItem({ flag, shipment, highlighted, flash, onDispute
   return (
     <li
       data-highlighted={highlighted || undefined}
-      className={`border-b border-hairline px-5 py-2.5 last:border-b-0 ${highlighted ? "bg-lime/30" : ""} ${
+      className={`border-b border-hairline px-5 py-2 last:border-b-0 ${highlighted ? "bg-lime/30" : ""} ${
         flash ? "flash" : ""
       }`}
     >
       <div className="flex min-h-7 items-center gap-3">
         <Badge tone={flag.severity}>{SEVERITY_LABEL[flag.severity]}</Badge>
         <span className="text-base font-semibold tabular-nums">{money(flag.amountAtRisk)}</span>
-        <span className="min-w-0 flex-1 truncate text-xs text-muted">
+        <span className="min-w-0 flex-1 truncate text-[13px] text-muted">
           {flag.vendor} · {flag.billId}
         </span>
         {status ? (
@@ -90,13 +90,13 @@ export default function FlagItem({ flag, shipment, highlighted, flash, onDispute
           </span>
         )}
       </div>
-      <p className="mt-1 text-pretty text-sm text-ink/80">
+      <p className="mt-1 text-pretty text-[15px] text-ink">
         {flag.reason}{" "}
         <button
           ref={draftButton}
           type="button"
           onClick={() => setShowDraft(true)}
-          className="whitespace-nowrap rounded-sm text-[13px] font-semibold text-ink underline decoration-ink/30 underline-offset-2 hover:decoration-ink"
+          className="whitespace-nowrap rounded-sm text-sm font-semibold text-ink underline decoration-ink/30 underline-offset-2 hover:decoration-ink"
         >
           Draft dispute email
         </button>

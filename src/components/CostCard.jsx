@@ -28,7 +28,7 @@ function useCountUp(target, duration = 700) {
   return value;
 }
 
-const Label = ({ children }) => <div className="text-xs font-semibold text-ink/70">{children}</div>;
+const Label = ({ children }) => <div className="text-sm font-semibold text-muted">{children}</div>;
 
 export default function CostCard({ shipment, cost, flash, actions }) {
   const shownActual = useCountUp(cost.actualPerUnit);
@@ -38,11 +38,11 @@ export default function CostCard({ shipment, cost, flash, actions }) {
 
   return (
     <>
-      <section className="hero grid grid-cols-1 gap-4 rounded-2xl p-5 md:grid-cols-[1fr_minmax(0,30rem)]">
+      <section className="hero grid grid-cols-1 gap-4 rounded-2xl p-4 md:grid-cols-[1fr_minmax(0,30rem)]">
         <div className="flex flex-col justify-between gap-4">
           <div>
-            <p className="text-xs text-ink/70">Shipment {shipment.id}</p>
-            <h1 className="mt-1 max-w-md text-balance text-3xl leading-[1.1] tracking-tight uppercase">
+            <p className="text-sm text-muted">Shipment {shipment.id}</p>
+            <h1 className="mt-1 max-w-md text-balance text-3xl leading-tight font-semibold tracking-tight">
               {shipment.name}
             </h1>
           </div>
@@ -52,22 +52,22 @@ export default function CostCard({ shipment, cost, flash, actions }) {
               <div className="mt-1 text-3xl font-semibold tracking-tight tabular-nums">
                 {perUnit(shipment.supplierUnitPrice)}
               </div>
-              <div className="text-xs text-ink/70">per unit, {shipment.units.toLocaleString()} units</div>
+              <div className="text-sm text-muted">per unit, {shipment.units.toLocaleString()} units</div>
             </div>
             <div className="glass rounded-2xl px-4 py-3">
               <Label>Expected landed cost</Label>
               <div className="mt-1 text-3xl font-semibold tracking-tight tabular-nums">
                 {perUnit(cost.expectedPerUnit)}
               </div>
-              <div className="text-xs text-ink/70">per unit, from quote</div>
+              <div className="text-sm text-muted">per unit, from quote</div>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col justify-between gap-4">
           <div className="flex items-center justify-end gap-3">{actions}</div>
-          <div className="rounded-2xl bg-ink px-5 py-4 text-white">
-            <div className="text-xs font-semibold text-white/70">Actual landed cost</div>
+          <div className="rounded-2xl bg-ink px-5 py-3 text-white">
+            <div className="text-sm font-semibold text-white/85">Actual landed cost</div>
             <div className="flex flex-wrap items-baseline gap-x-4">
               <span
                 key={cost.actualTotal}
@@ -89,23 +89,22 @@ export default function CostCard({ shipment, cost, flash, actions }) {
               />
               <span className="flex-1 rounded-full bg-over" />
             </div>
-            <div className="mt-2 text-xs text-white/70">per unit, {money(cost.actualTotal)} billed so far</div>
+            <div className="mt-2 text-sm text-white/85">per unit, {money(cost.actualTotal)} billed so far</div>
           </div>
         </div>
       </section>
 
       <div
-        className="flex flex-wrap items-center gap-x-6 gap-y-1 rounded-2xl bg-white px-5 py-2.5 text-[15px]"
+        className="flex flex-wrap items-center gap-x-6 gap-y-1 rounded-2xl border border-hairline bg-white px-5 py-2.5 text-base"
         aria-live="polite"
       >
-        <span className="size-2 rounded-full bg-red" aria-hidden="true" />
         {cost.unresolvedCount > 0 ? (
-          <span className="-ml-3 font-semibold">
+          <span className="font-semibold">
             <span className="tabular-nums text-danger">{money(cost.moneyAtRisk)}</span> at risk across{" "}
             {cost.unresolvedCount} {cost.unresolvedCount === 1 ? "charge" : "charges"}
           </span>
         ) : (
-          <span className="-ml-3 font-semibold">$0 at risk. All flagged charges reviewed.</span>
+          <span className="font-semibold">$0 at risk. All flagged charges reviewed.</span>
         )}
         {cost.disputedCount > 0 && (
           <span className="text-muted">

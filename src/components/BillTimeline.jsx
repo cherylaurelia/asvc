@@ -8,8 +8,8 @@ export default function BillTimeline({ bills, flags, selectedBillId, onSelect })
     flags.some((f) => f.billId === bill.id && (f.status === "open" || f.status === "disputed"));
 
   return (
-    <section className="overflow-hidden rounded-2xl bg-white">
-      <h2 className="border-b border-hairline px-5 py-2.5 text-[15px] font-semibold">
+    <section className="overflow-hidden rounded-2xl border border-hairline bg-white">
+      <h2 className="border-b border-hairline px-5 py-2.5 text-base font-semibold">
         Bills <span className="font-normal text-muted">({bills.length})</span>
       </h2>
       <ul>
@@ -22,7 +22,7 @@ export default function BillTimeline({ bills, flags, selectedBillId, onSelect })
                 type="button"
                 onClick={() => onSelect(selected ? null : bill.id)}
                 aria-pressed={selected}
-                className={`flex w-full items-center gap-3 px-5 text-left text-sm -outline-offset-2 ${
+                className={`flex w-full items-center gap-3 px-5 text-left text-[15px] -outline-offset-2 ${
                   selected ? "bg-lime/30" : "hover:bg-frame"
                 } ${bill.isLate ? "flash" : ""}`}
               >
@@ -34,12 +34,12 @@ export default function BillTimeline({ bills, flags, selectedBillId, onSelect })
                   />
                   <span className={`relative my-auto size-2.5 rounded-full ${flagged ? "bg-orange" : "bg-ink"}`} />
                 </span>
-                <span className="w-14 shrink-0 whitespace-nowrap py-1.5 tabular-nums text-muted">
+                <span className="w-14 shrink-0 whitespace-nowrap py-1 tabular-nums text-muted">
                   {shortDate(bill.date)}
                 </span>
-                <span className="min-w-0 flex-1 py-1.5">
+                <span className="min-w-0 flex-1 py-1">
                   <span className="block truncate font-semibold">{bill.vendor}</span>
-                  <span className="block text-xs text-muted">{bill.id}</span>
+                  <span className="block text-[13px] text-muted">{bill.id}</span>
                 </span>
                 {flagged && <Badge tone="review">FLAGGED</Badge>}
                 <span className="w-20 shrink-0 text-right font-semibold tabular-nums">{money(billTotal(bill))}</span>

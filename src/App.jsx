@@ -29,8 +29,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen p-2 md:p-3">
-      <div className="mx-auto flex max-w-[84rem] gap-3 rounded-[1.75rem] bg-frame p-3 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.45)]">
+    <div className="min-h-screen p-3">
+      <div className="mx-auto flex max-w-[84rem] gap-3">
         <aside className="hidden w-14 shrink-0 flex-col items-center gap-3 rounded-2xl bg-ink py-3 md:flex">
           <span className="flex size-9 items-center justify-center rounded-xl bg-lime text-ink" title="Landed">
             <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -88,9 +88,6 @@ export default function App() {
             />
           </div>
           <Breakdown rows={categoryBreakdown(bills)} />
-          <footer className="px-2 text-xs text-muted">
-            Prototype running on hardcoded sample data. Charges are flagged for review, not proven wrong.
-          </footer>
         </main>
       </div>
     </div>
