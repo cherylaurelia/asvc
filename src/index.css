@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #1c1d1b;
-  --color-muted: #666a61;
-  --color-accent: #1c1d1b;
-  --color-accent-focus: #3a3c37;
-  --color-lime: #a8d83a;
-  --color-backdrop: #b3b7ad;
-  --color-frame: #eff0ec;
-  --color-hairline: #e6e8e1;
+  --color-ink: #1f1f1f;
+  --color-muted: #55534d;
+  --color-accent: #1f1f1f;
+  --color-accent-focus: #3d3d3d;
+  --color-lime: #e4f222;
+  --color-backdrop: #f4f2ed;
+  --color-frame: #f4f2ed;
+  --color-hairline: #e2dfd7;
   --color-red: #ff3b30;
-  --color-orange: #ff9500;
+  --color-orange: #f08c00;
   --color-green: #34c759;
-  --color-danger: #c4291c;
-  --color-warning: #a14a00;
-  --color-success: #2c6e1f;
+  --color-danger: #b42318;
+  --color-warning: #8a4100;
+  --color-success: #1f6b2c;
   --color-over: #ff9a8a;
 }
 
@@ -41,19 +41,15 @@
   }
 }
 
-/* Hero banner: soft sage field with a lime glow on the right. */
+/* Hero: plain white surface, no gradient. */
 .hero {
-  background:
-    radial-gradient(38rem 20rem at 78% 30%, rgb(168 216 58 / 0.35), transparent 65%),
-    linear-gradient(120deg, #e3e8dc 0%, #cfd7c4 55%, #b9c4ad 100%);
+  background: #fff;
+  border: 1px solid var(--color-hairline);
 }
 
-/* Frosted stat card sitting on the hero. */
+/* Quiet stat tile inside the hero. */
 .glass {
-  background: rgb(255 255 255 / 0.42);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgb(255 255 255 / 0.6);
+  background: var(--color-frame);
 }
 
 .glass-sheet {
@@ -63,7 +59,7 @@
 
 /* New-bill highlight: an accent wash that settles back to the surface. */
 @keyframes flash {
-  0%, 55% { background-color: rgb(168 216 58 / 0.55); }
+  0%, 55% { background-color: rgb(228 242 34 / 0.6); }
   100% { background-color: transparent; }
 }
 
