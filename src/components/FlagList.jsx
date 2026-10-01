@@ -1,4 +1,5 @@
 import FlagItem from "./FlagItem.jsx";
+import Badge from "./Badge.jsx";
 
 export default function FlagList({ flags, shipment, selectedBillId, lateBillId, dutyOk, onSetStatus }) {
   return (
@@ -6,6 +7,7 @@ export default function FlagList({ flags, shipment, selectedBillId, lateBillId, 
       <h2 className="border-b border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-900">
         Flagged for review <span className="font-normal text-slate-500">({flags.length})</span>
       </h2>
+      {flags.length === 0 && <p className="px-4 py-3 text-sm text-slate-500">No charges flagged on these bills.</p>}
       <ul>
         {flags.map((flag) => (
           <FlagItem
@@ -21,7 +23,7 @@ export default function FlagList({ flags, shipment, selectedBillId, lateBillId, 
       </ul>
       {dutyOk && (
         <div className="flex items-center gap-2 border-t border-slate-200 px-4 py-2.5 text-sm text-emerald-800">
-          <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-semibold">CHECKED</span>
+          <Badge tone="checked">CHECKED</Badge>
           Duty checked: matches {shipment.dutyRate * 100}% rate
         </div>
       )}

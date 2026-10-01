@@ -1,5 +1,6 @@
 import { billTotal } from "../lib/calc.js";
 import { money, shortDate } from "../lib/format.js";
+import Badge from "./Badge.jsx";
 
 export default function BillTimeline({ bills, flags, selectedBillId, onSelect }) {
   const sorted = [...bills].sort((a, b) => a.date.localeCompare(b.date));
@@ -19,8 +20,9 @@ export default function BillTimeline({ bills, flags, selectedBillId, onSelect })
               <button
                 type="button"
                 onClick={() => onSelect(selected ? null : bill.id)}
-                className={`flex w-full items-center gap-3 px-4 py-2 text-left text-sm hover:bg-slate-50 ${
-                  selected ? "bg-indigo-50 hover:bg-indigo-50" : ""
+                aria-pressed={selected}
+                className={`flex w-full items-center gap-3 px-4 py-2 text-left text-sm -outline-offset-2 ${
+                  selected ? "bg-indigo-50" : "hover:bg-slate-50"
                 } ${bill.isLate ? "flash" : ""}`}
               >
                 <span className="w-14 shrink-0 tabular-nums text-slate-500">{shortDate(bill.date)}</span>
@@ -28,11 +30,7 @@ export default function BillTimeline({ bills, flags, selectedBillId, onSelect })
                   <span className="block truncate font-medium text-slate-900">{bill.vendor}</span>
                   <span className="block text-xs text-slate-500">{bill.id}</span>
                 </span>
-                {needsReview(bill) && (
-                  <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs font-semibold text-amber-800">
-                    FLAGGED
-                  </span>
-                )}
+                {needsReview(bill) && <Badge tone="review">FLAGGED</Badge>}
                 <span className="w-20 shrink-0 text-right font-medium tabular-nums text-slate-900">
                   {money(billTotal(bill))}
                 </span>
