@@ -58,10 +58,10 @@ export default function App() {
           <BillTimeline bills={bills} flags={flags} selectedBillId={selectedBillId} onSelect={setSelectedBillId} />
           <FlagList
             flags={flags}
+            shipment={data.shipment}
             selectedBillId={selectedBillId}
             lateBillId={data.lateBill.id}
             dutyOk={dutyChecked(data.shipment, bills)}
-            dutyRate={data.shipment.dutyRate}
             onSetStatus={(id, status) => setFlagStatus((s) => ({ ...s, [id]: status }))}
           />
         </div>
