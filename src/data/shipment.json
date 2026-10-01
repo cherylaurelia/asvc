@@ -1,0 +1,47 @@
+{
+  "shipment": {
+    "id": "SHP-1042",
+    "name": "1,000 dining chairs from Vietnam",
+    "product": "Dining chair, oak",
+    "units": 1000,
+    "supplierUnitPrice": 11.0,
+    "homeCurrency": "USD",
+    "dutyRate": 0.05,
+    "declaredValue": 11000,
+    "quoteId": "Q-778",
+    "status": "arrived"
+  },
+  "quote": {
+    "id": "Q-778",
+    "shipmentId": "SHP-1042",
+    "lines": [
+      { "chargeType": "ocean_freight", "vendor": "BlueWave Logistics", "amount": 1200 },
+      { "chargeType": "fuel_surcharge", "vendor": "BlueWave Logistics", "amount": 420 },
+      { "chargeType": "destination_handling", "vendor": "BlueWave Logistics", "amount": 150 },
+      { "chargeType": "brokerage", "vendor": "Northgate Customs", "amount": 175 },
+      { "chargeType": "entry_filing", "vendor": "Northgate Customs", "amount": 65 }
+    ]
+  },
+  "bills": [
+    { "id": "SUP-0091", "shipmentId": "SHP-1042", "vendor": "Hanoi Woodworks Co.", "vendorType": "supplier", "date": "2026-08-04", "currency": "USD",
+      "lines": [ { "id": "SUP-0091-L1", "chargeType": "product", "description": "Dining chair, oak x 1,000", "amount": 11000 } ] },
+    { "id": "INV-2231", "shipmentId": "SHP-1042", "vendor": "BlueWave Logistics", "vendorType": "forwarder", "date": "2026-08-20", "currency": "USD",
+      "lines": [
+        { "id": "INV-2231-L1", "chargeType": "ocean_freight", "description": "Ocean freight, 40ft container", "amount": 1200 },
+        { "id": "INV-2231-L2", "chargeType": "fuel_surcharge", "description": "Fuel surcharge (BAF)", "amount": 420 },
+        { "id": "INV-2231-L3", "chargeType": "fuel_surcharge", "description": "Fuel surcharge (BAF)", "amount": 420 },
+        { "id": "INV-2231-L4", "chargeType": "destination_handling", "description": "Destination handling", "amount": 150 } ] },
+    { "id": "NG-5580", "shipmentId": "SHP-1042", "vendor": "Northgate Customs", "vendorType": "broker", "date": "2026-09-02", "currency": "USD",
+      "lines": [
+        { "id": "NG-5580-L1", "chargeType": "brokerage", "description": "Customs brokerage fee", "amount": 175 },
+        { "id": "NG-5580-L2", "chargeType": "entry_filing", "description": "Entry filing", "amount": 65 } ] },
+    { "id": "DUTY-3317", "shipmentId": "SHP-1042", "vendor": "Customs duty (via Northgate)", "vendorType": "government", "date": "2026-09-02", "currency": "USD",
+      "lines": [ { "id": "DUTY-3317-L1", "chargeType": "duty", "description": "Import duty, 5%", "amount": 550 } ] },
+    { "id": "HT-8812", "shipmentId": "SHP-1042", "vendor": "Harbor Terminal", "vendorType": "terminal", "date": "2026-09-09", "currency": "USD",
+      "lines": [ { "id": "HT-8812-L1", "chargeType": "demurrage", "description": "Demurrage, 2 days", "amount": 220 } ] }
+  ],
+  "lateBill": {
+    "id": "HT-8840", "shipmentId": "SHP-1042", "vendor": "Harbor Terminal", "vendorType": "terminal", "date": "2026-09-23", "currency": "USD", "isLate": true,
+    "lines": [ { "id": "HT-8840-L1", "chargeType": "storage", "description": "Storage fee, 3 days", "amount": 180 } ]
+  }
+}
