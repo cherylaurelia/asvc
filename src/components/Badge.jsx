@@ -1,8 +1,8 @@
 const TONES = {
-  high: "bg-red-100 text-red-700",
-  review: "bg-amber-100 text-amber-800",
-  checked: "bg-emerald-100 text-emerald-800",
-  neutral: "bg-stone-200 text-stone-700",
+  high: "bg-red/12 text-danger",
+  review: "bg-orange/15 text-warning",
+  checked: "bg-green/15 text-success",
+  neutral: "bg-black/6 text-muted",
 };
 
 export default function Badge({ tone, children }) {
