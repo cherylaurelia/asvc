@@ -10,7 +10,7 @@ export default function CostCard({ shipment, cost, flash }) {
 
   return (
     <section>
-      <div className="grid grid-cols-[1fr_1fr_1.5fr] gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_1fr_1.5fr]">
         <div className="rounded-lg border border-slate-200 bg-white p-5">
           <Label>Supplier price</Label>
           <div className="mt-2 text-3xl font-semibold tabular-nums text-slate-700">
@@ -29,10 +29,10 @@ export default function CostCard({ shipment, cost, flash }) {
 
         <div className="rounded-lg border border-slate-300 bg-white p-5">
           <Label>Actual landed cost</Label>
-          <div className="mt-1 flex items-baseline gap-4">
+          <div className="mt-1 flex flex-wrap items-baseline gap-x-4">
             <span
               key={cost.actualTotal}
-              className={`rounded-md text-6xl font-semibold tabular-nums text-slate-900 ${flash ? "flash" : ""}`}
+              className={`rounded-md text-6xl font-semibold tracking-tight tabular-nums text-slate-900 ${flash ? "flash" : ""}`}
             >
               {perUnit(cost.actualPerUnit)}
             </span>
@@ -45,7 +45,7 @@ export default function CostCard({ shipment, cost, flash }) {
         </div>
       </div>
 
-      <div className="mt-3 flex items-baseline gap-6 text-sm">
+      <div className="mt-3 flex flex-wrap items-baseline gap-x-6 gap-y-1 text-sm" aria-live="polite">
         {cost.unresolvedCount > 0 ? (
           <span className="font-medium text-slate-900">
             <span className="tabular-nums text-red-600">{money(cost.moneyAtRisk)}</span> at risk across{" "}

@@ -31,20 +31,20 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-3">
-          <span className="text-lg font-semibold tracking-tight">Landed</span>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
+          <h1 className="text-lg font-semibold tracking-tight">Landed</h1>
           <span className="text-sm text-slate-500">
             {data.shipment.id} · {data.shipment.name}
           </span>
           <span className="ml-auto flex items-center gap-4">
-            <button type="button" onClick={resetDemo} className="text-sm text-slate-500 underline hover:text-slate-900">
+            <button type="button" onClick={resetDemo} className="rounded-sm text-sm text-slate-600 underline underline-offset-2 hover:text-slate-900">
               Reset demo
             </button>
             <button
               type="button"
               onClick={simulateLateBill}
               disabled={lateBillAdded}
-              className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
+              className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-700 active:bg-indigo-800 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-600"
             >
               Simulate new bill
             </button>
@@ -52,9 +52,9 @@ export default function App() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl space-y-4 px-6 py-5">
+      <main className="mx-auto max-w-6xl space-y-4 px-4 py-5 sm:px-6">
         <CostCard shipment={data.shipment} cost={cost} flash={lateBillAdded} />
-        <div className="grid grid-cols-[2fr_3fr] items-start gap-4">
+        <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-[2fr_3fr]">
           <BillTimeline bills={bills} flags={flags} selectedBillId={selectedBillId} onSelect={setSelectedBillId} />
           <FlagList
             flags={flags}
