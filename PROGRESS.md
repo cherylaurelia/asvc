@@ -9,7 +9,7 @@
 - Tier 3: "Draft dispute email" modal (string template, nothing sent).
 - Polish pass: shared `Badge` component, keyboard focus rings, Escape to close the email draft with focus returned to its link, reduced-motion handling, flag rows keep their height when buttons become a badge, empty state for no flags, layout stacks on narrow screens (checked at 390px wide).
 
-- Restyle: follows a reference dashboard the team supplied. Sage backdrop, rounded app frame with a dark side rail, soft green hero banner holding the shipment title, frosted supplier and expected cards and a dark actual-cost card, white rounded cards below, lime and near-black accents. The actual cost number counts up when it changes. Tokens and surface styles live in `src/index.css`.
+- Restyle: Ramp palette (lime #E4F222, near-black #1F1F1F, white on a warm off-white page) with readability first. Flat white cards with hairline borders, no gradients or glass, larger text, darker secondary text, dark bars. Lime is used only as an accent on dark surfaces and as a soft highlight. The actual cost number counts up when it changes.
 
 ## Cut
 - Second shipment and shipment list page (Tier 3). Not built.
@@ -28,7 +28,9 @@
 - Quote lines are matched by `chargeType` only.
 - Timeline warning marker is the word "FLAGGED" in amber; it clears when all of a bill's flags are approved.
 - `money()` shows whole dollars without cents ($420) and cents only when needed.
-- Earlier lime-and-black and Apple glass passes were replaced by the reference-image look.
+- Earlier glass and sage reference-image passes were replaced for readability.
+- The on-screen sample-data footer was removed at the team's request. The README still states it is a prototype on sample data.
+- No Ramp logo, wordmark or name is used in the UI, only the colours.
 - The side rail shows only the logo mark and one active view icon. No extra nav icons were added, since there are no other pages.
 - The email draft is rendered on `document.body` because a blurred glass ancestor would trap a fixed overlay.
 - Font is the system stack (SF Pro on Apple devices); Inter from Google Fonts is the fallback elsewhere.
