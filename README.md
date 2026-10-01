@@ -2,7 +2,7 @@
 
 Landed groups every bill for one import shipment, shows the true landed cost per unit, and flags charges that do not match the original quote. It is a hackathon prototype running entirely on hardcoded sample data.
 
-Live demo: https://asvc.vercel.app
+Live demo: https://landed-ramp.vercel.app
 
 ![Landed demo: dispute a charge, simulate a late bill, draft a dispute email, reset](docs/demo.gif)
 
@@ -87,6 +87,36 @@ Deploys on Vercel with default Vite settings (build command `npm run build`, out
 7. Click **Reset demo** to return to the starting state.
 
 Also available: click a bill to highlight its flags, **Approve** a flag to take it out of money at risk, and **Draft dispute email** to see a pre-written message to the vendor.
+
+## 90-second demo script
+
+Before you start:
+
+1. Open https://landed-ramp.vercel.app in a full-screen browser window at 100% zoom, on a screen at least 1440x900.
+2. Click **Reset demo** so you begin from the starting state.
+3. Simulate new bill works once per run, so do not click it early.
+
+| Time | Do | Say |
+|---|---|---|
+| 0:00-0:15 | Point at the title, then Supplier price | "An importer orders 1,000 chairs at $11 each. But $11 isn't what a chair costs them. Freight, customs and terminal fees arrive later, on separate bills, from different vendors." |
+| 0:15-0:25 | Run the cursor down the Bills list | "Here are five bills from five vendors over five weeks. Today, nobody adds these up per shipment." |
+| 0:25-0:40 | Point at the big number, then Expected | "Landed does. Each chair really cost $14.20. The quote said $13.56. So where's the 64 cents?" |
+| 0:40-0:55 | Point at the two flags | "It checks every line against the quote. A fuel surcharge billed twice, $420. And $220 of demurrage that was never quoted. That's $640 at risk on one shipment." |
+| 0:55-1:05 | Click **Dispute** on the $420 flag | "One click to dispute it. If that dispute succeeds, the cost drops to $13.78 a chair." |
+| 1:05-1:20 | Click **Simulate new bill** and pause while the number counts up | "Two weeks later the terminal sends another bill. The cost updates live to $14.38, and there's a third flag." |
+| 1:20-1:30 | Stop clicking and face the judges | "Without this, they'd find out their margins were wrong months later. Landed tells them the day the bill arrives." |
+
+If there is spare time or a question:
+
+- Click **Draft dispute email** on a flag to show the pre-written message to the vendor. Press Escape to close it.
+- Click a bill in the timeline to highlight the charges it caused.
+
+Say these plainly if asked:
+
+- It runs on sample data for one shipment.
+- Flags mean "worth checking", not "proven wrong".
+- The $640 and $820 figures come from this sample shipment. They are not typical savings.
+- It does not read real invoices, send emails or connect to Ramp.
 
 ## Limitations
 
