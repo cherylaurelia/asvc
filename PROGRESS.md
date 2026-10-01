@@ -9,7 +9,7 @@
 - Tier 3: "Draft dispute email" modal (string template, nothing sent).
 - Polish pass: shared `Badge` component, keyboard focus rings, Escape to close the email draft with focus returned to its link, reduced-motion handling, flag rows keep their height when buttons become a badge, empty state for no flags, layout stacks on narrow screens (checked at 390px wide).
 
-- Restyle: Apple-style liquid glass dashboard. Translucent blurred panels over a soft colour field, floating pill toolbar, one blue accent (#0066cc), Apple system red, orange and green for state, system font stack, 400/600/700 weights only. The actual cost number counts up when it changes. Tokens and the `.glass` recipe live in `src/index.css`.
+- Restyle: follows a reference dashboard the team supplied. Sage backdrop, rounded app frame with a dark side rail, soft green hero banner holding the shipment title, frosted supplier and expected cards and a dark actual-cost card, white rounded cards below, lime and near-black accents. The actual cost number counts up when it changes. Tokens and surface styles live in `src/index.css`.
 
 ## Cut
 - Second shipment and shipment list page (Tier 3). Not built.
@@ -28,7 +28,8 @@
 - Quote lines are matched by `chargeType` only.
 - Timeline warning marker is the word "FLAGGED" in amber; it clears when all of a bill's flags are approved.
 - `money()` shows whole dollars without cents ($420) and cents only when needed.
-- Look and tokens follow the open-source `rukkiecodes/claude-apple-design-system` reference (blue accent, pill buttons, hairlines), plus glass panels at the team's request. That reference avoids shadows; the glass panels use a soft one so they read as lifted. An earlier lime and black pass was replaced.
+- Earlier lime-and-black and Apple glass passes were replaced by the reference-image look.
+- The side rail shows only the logo mark and one active view icon. No extra nav icons were added, since there are no other pages.
 - The email draft is rendered on `document.body` because a blurred glass ancestor would trap a fixed overlay.
 - Font is the system stack (SF Pro on Apple devices); Inter from Google Fonts is the fallback elsewhere.
 - Empty inline favicon added so the page loads with no console 404.
