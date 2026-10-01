@@ -3,7 +3,7 @@ import Badge from "./Badge.jsx";
 
 export default function FlagList({ flags, shipment, selectedBillId, lateBillId, dutyOk, onSetStatus }) {
   return (
-    <section className="glass overflow-hidden rounded-3xl">
+    <section className="overflow-hidden rounded-2xl bg-white">
       <h2 className="border-b border-hairline px-5 py-2.5 text-[15px] font-semibold">
         Flagged for review <span className="font-normal text-muted">({flags.length})</span>
       </h2>

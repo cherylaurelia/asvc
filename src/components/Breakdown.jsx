@@ -4,7 +4,7 @@ export default function Breakdown({ rows }) {
   const total = rows.reduce((sum, row) => sum + row.amount, 0);
 
   return (
-    <section className="glass rounded-3xl px-5 py-3">
+    <section className="rounded-2xl bg-white px-5 py-3">
       <div className="flex items-baseline justify-between">
         <h2 className="text-[15px] font-semibold">Where the money went</h2>
         <span className="text-xs tabular-nums text-muted">{money(total)} billed</span>
@@ -13,10 +13,10 @@ export default function Breakdown({ rows }) {
         {rows.map((row) => (
           <div key={row.key} className="contents">
             <span className="text-ink/80">{row.label}</span>
-            <span className="h-2 rounded-full bg-black/6" aria-hidden="true">
+            <span className="h-2.5 rounded-full bg-frame" aria-hidden="true">
               <span
-                className={`grow block h-2 rounded-full transition-[width] duration-700 ease-out motion-reduce:transition-none ${
-                  row.key === "extra" ? "bg-orange" : "bg-accent"
+                className={`grow block h-2.5 rounded-full transition-[width] duration-700 ease-out motion-reduce:transition-none ${
+                  row.key === "extra" ? "bg-orange" : "bg-lime"
                 }`}
                 style={{ width: `${row.percent}%` }}
               />
